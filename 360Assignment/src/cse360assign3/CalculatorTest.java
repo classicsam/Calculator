@@ -68,11 +68,18 @@ public class CalculatorTest
 		calc.divide(0);
 		assertEquals(0, calc.getTotal());
 	}
-
+	
+	// returns the correct history string after a series of calculations
 	@Test
 	public void testGetHistory()
 	{
-		fail("Not yet implemented");
+		Calculator calc = new Calculator();
+		calc.add(4);
+		calc.subtract(2);
+		calc.multiply(2);
+		calc.add(5);
+		calc.divide(0);
+		assertEquals("0 + 4 - 2 * 2 + 5 / 0", calc.getHistory());
 	}
 
 }
