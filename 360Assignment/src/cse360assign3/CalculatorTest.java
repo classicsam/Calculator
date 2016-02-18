@@ -14,35 +14,59 @@ public class CalculatorTest
 		Calculator calc = new Calculator();
 		assertNotNull(calc);
 	}
-
+	
+	// returns the default total (zero) of a newly instantiated Calculator
 	@Test
 	public void testGetTotal()
 	{
-		fail("Not yet implemented");
+		Calculator calc = new Calculator();
+		assertEquals(0, calc.getTotal());
 	}
-
+	
+	// the value added is reflected in the total
 	@Test
 	public void testAdd()
 	{
-		fail("Not yet implemented");
+		Calculator calc = new Calculator();
+		calc.add(5);
+		assertEquals(5, calc.getTotal());
 	}
-
+	// the value subtracted is reflected in the total
 	@Test
 	public void testSubtract()
 	{
-		fail("Not yet implemented");
+		Calculator calc = new Calculator();
+		calc.subtract(5);
+		assertEquals(-5, calc.getTotal());
 	}
 
+	// Tests multiplication: 0 * 4 = 0
 	@Test
 	public void testMultiply()
 	{
-		fail("Not yet implemented");
+		Calculator calc = new Calculator();
+		calc.multiply(4);
+		assertEquals(0, calc.getTotal());
 	}
-
+	// performs integer division: 5 / 2 = 2
 	@Test
 	public void testDivide()
 	{
-		fail("Not yet implemented");
+		Calculator calc = new Calculator();
+		calc.add(5);
+		calc.divide(2);
+		assertEquals(2, calc.getTotal());
+	}
+	
+	// accounts for division by zero by setting the total
+	// to zero
+	@Test
+	public void testDivideByZero()
+	{
+		Calculator calc = new Calculator();
+		calc.add(2);
+		calc.divide(0);
+		assertEquals(0, calc.getTotal());
 	}
 
 	@Test
