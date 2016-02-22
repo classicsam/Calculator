@@ -23,34 +23,71 @@ public class CalculatorTest
 		assertEquals(0, calc.getTotal());
 	}
 	
-	// the value added is reflected in the total
+	// the positive/negative value added is reflected in the total
 	@Test
-	public void testAdd()
+	public void testAddPos()
 	{
 		Calculator calc = new Calculator();
 		calc.add(5);
 		assertEquals(5, calc.getTotal());
 	}
-	// the value subtracted is reflected in the total
+	
 	@Test
-	public void testSubtract()
+	public void testAddNeg()
+	{
+		Calculator calc = new Calculator();
+		calc.add(-5);
+		assertEquals(-5, calc.getTotal());
+	}
+	
+	// the positive/negative value subtracted is reflected in the total
+	@Test
+	public void testSubtractPos()
 	{
 		Calculator calc = new Calculator();
 		calc.subtract(5);
 		assertEquals(-5, calc.getTotal());
 	}
 
+	@Test
+	public void testSubtractNeg()
+	{
+		Calculator calc = new Calculator();
+		calc.subtract(-5);
+		assertEquals(5, calc.getTotal());
+	}
+	
 	// Tests multiplication: 0 * 4 = 0
 	@Test
-	public void testMultiply()
+	public void testMultiplyWithZero()
 	{
 		Calculator calc = new Calculator();
 		calc.multiply(4);
 		assertEquals(0, calc.getTotal());
 	}
+	
+	// checking multiplication with positive and negative integers
+	@Test
+	public void testMultiplyPos()
+	{
+		Calculator calc = new Calculator();
+		calc.add(2);
+		calc.multiply(4);
+		assertEquals(8, calc.getTotal());
+	}
+	
+	@Test
+	public void testMultiplyNeg()
+	{
+		Calculator calc = new Calculator();
+		calc.add(2);
+		calc.multiply(-4);
+		assertEquals(-8, calc.getTotal());
+	}
+	
 	// performs integer division: 5 / 2 = 2
 	@Test
-	public void testDivide()
+	public void testDividePos()
 	{
 		Calculator calc = new Calculator();
 		calc.add(5);
@@ -58,8 +95,17 @@ public class CalculatorTest
 		assertEquals(2, calc.getTotal());
 	}
 	
-	// accounts for division by zero by setting the total
-	// to zero
+	// negative integer division
+	@Test
+	public void testDivideNeg()
+	{
+		Calculator calc = new Calculator();
+		calc.add(5);
+		calc.divide(-2);
+		assertEquals(-2, calc.getTotal());
+	}
+	
+	// accounts for division by zero by setting the total to zero
 	@Test
 	public void testDivideByZero()
 	{
@@ -80,6 +126,7 @@ public class CalculatorTest
 		calc.add(5);
 		calc.divide(0);
 		assertEquals("0 + 4 - 2 * 2 + 5 / 0", calc.getHistory());
+		assertEquals(0, calc.getTotal());
 	}
 
 }
